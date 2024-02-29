@@ -11,14 +11,6 @@ public class EnemyHealth : MonoBehaviour
     {
         
     }
-    public void DealDamage(float damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
    
     // Update is called once per frame
     void Update()

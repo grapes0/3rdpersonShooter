@@ -28,6 +28,10 @@ public class Fireball : MonoBehaviour
         if (enemyHealth != null)
         {
             enemyHealth.health -= damage;
+            if(enemyHealth.health <= 0)
+            {
+                Destroy(enemyHealth.gameObject);
+            }
         }
     }
     // Update is called once per frame
