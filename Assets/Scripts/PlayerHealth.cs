@@ -25,6 +25,12 @@ public class PlayerHealth : MonoBehaviour
         }
         DrawHealthBar();
     }
+    public void AddHealth(float amount)
+    {
+        health += amount;
+        Mathf.Clamp(health, 0, _maxHealth);
+        DrawHealthBar();
+    }
 
     private void DrawHealthBar()
     {

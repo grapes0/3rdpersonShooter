@@ -25,14 +25,7 @@ public class Fireball : MonoBehaviour
     private void DamageEnemy(Collision collision)
     {
         var enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
-        if (enemyHealth != null)
-        {
-            enemyHealth.health -= damage;
-            if(enemyHealth.health <= 0)
-            {
-                Destroy(enemyHealth.gameObject);
-            }
-        }
+        enemyHealth.TakeDamage(damage);
     }
     // Update is called once per frame
     void FixedUpdate()

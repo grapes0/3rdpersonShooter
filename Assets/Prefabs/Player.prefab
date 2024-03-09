@@ -359,7 +359,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.885, y: 1.274, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1333998998875590305}
   m_Father: {fileID: 8330514991076475691}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -532,6 +533,36 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6798726980914168969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1333998998875590305}
+  m_Layer: 0
+  m_Name: GrenadeSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1333998998875590305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798726980914168969}
+  m_LocalRotation: {x: -0.2588186, y: -0, z: -0, w: 0.965926}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4656016851286625403}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -30.000002, y: 0, z: 0}
 --- !u!1 &7007583139331868368
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,6 +998,7 @@ GameObject:
   - component: {fileID: 8330514991076475688}
   - component: {fileID: 3196797116786707405}
   - component: {fileID: 4404420768762674033}
+  - component: {fileID: 1625016999201999801}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1073,6 +1105,21 @@ MonoBehaviour:
   healthRectTransform: {fileID: 2765589331567227997}
   gameplayUI: {fileID: 8728521906846170995}
   gameOverScreen: {fileID: 1641904474513305254}
+--- !u!114 &1625016999201999801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8330514991076475685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1f054d87b0a7c43a2df0dd4921f082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grenade: {fileID: 4050201142969060140, guid: 5e287f359423fc5478a3ed90107f5603, type: 3}
+  grenadeSource: {fileID: 1333998998875590305}
+  force: 500
 --- !u!1 &8728521906846170995
 GameObject:
   m_ObjectHideFlags: 0
