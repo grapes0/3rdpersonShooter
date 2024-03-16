@@ -19,7 +19,10 @@ public class Fireball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        DamageEnemy(collision);
+        if (collision.gameObject.GetComponent<EnemyHealth>())
+        {
+            DamageEnemy(collision);
+        }
         DestroyFireball();
     }
     private void DamageEnemy(Collision collision)
