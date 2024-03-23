@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    public bool patrolMode;
     public PlayerController player;
     public float viewAngle;
     public float damage = 30;
@@ -12,30 +13,41 @@ public class EnemyAI : MonoBehaviour
 
     private NavMeshAgent _navMeshAgent;
     private PlayerHealth _playerHealth;
+    private CharacterController _characterController;
     private float _distanceToDestination;
     private bool _playerNoticed;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _playerHealth = player.GetComponent<PlayerHealth>();
+        _characterController = player.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        NoticePlayerUpdate();
-        ChaseUpdate();
-        PatrolUpdate();
-        AttackUpdate();
+        if(patrolMode == true)
+        {
+            NoticePlayerUpdate();
+            ChaseUpdate();
+            PatrolUpdate();
+            AttackUpdate();
+        }
+        else
+        {
+            _playerNoticed = true;
+            ChaseUpdate();
+            AttackUpdate(); 
+        }
     }
 
-    void PickNewPoint()
+    private void PickNewPoint()
     {
-        _navMeshAgent.destination = patrolPoints[Random.Range(0, patrolPoints.Count)].position;
+            _navMeshAgent.destination = patrolPoints[Random.Range(0, patrolPoints.Count)].position;
     }
-    void PatrolUpdate()
+    private void PatrolUpdate()
     {
         if (!_playerNoticed)
         {
@@ -47,7 +59,7 @@ public class EnemyAI : MonoBehaviour
 
         }
     }
-    void NoticePlayerUpdate()
+    private void NoticePlayerUpdate()
     {
         var direction = player.transform.position - transform.position; //Направление вектора определяется вычитанием координат источника луча из координат конечного обЪекта
         _playerNoticed = false;
@@ -65,7 +77,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
-    void ChaseUpdate()
+    private void ChaseUpdate()
     {
         if (_playerNoticed)
         {
@@ -74,7 +86,7 @@ public class EnemyAI : MonoBehaviour
     }
     private void AttackUpdate()
     {
-        if(_playerNoticed == true && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+        if (_playerNoticed == true && Vector3.Distance(transform.position, player.transform.position) <= _navMeshAgent.stoppingDistance)
         {
             _playerHealth.TakeDamage(damage * Time.deltaTime);
         }
