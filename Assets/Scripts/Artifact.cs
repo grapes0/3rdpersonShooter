@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Artifact : MonoBehaviour
 {
     public float health;
     public GameObject artifactObject;
+    public UnityEvent onDestroy;
 
     public void TakeDamage(float damage)
     {
@@ -13,7 +15,7 @@ public class Artifact : MonoBehaviour
         if(health <= 0)
         {
             Destroy(artifactObject);
-            Debug.Log("Artifact destroyed! game over");
+            onDestroy.Invoke();
         }
     }
 }
